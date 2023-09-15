@@ -35,7 +35,7 @@ sourceSets {
     main {
         java {
             srcDir 'src'
-            exclude '**/CICFlowMeter.java'
+            exclude '**/App.java'
         }
     }
 }
@@ -82,7 +82,7 @@ task fatJar(type: Jar) {
         attributes 'Can-Retransform-Classes': true
         attributes 'Implementation-Title': 'Gradle Jar File Example',
                 'Implementation-Version': version,
-                'Main-Class': 'cic.cs.unb.ca.ifm.App'
+                'Main-Class': 'cic.cs.unb.ca.ifm.CICFlowMeter'
 
     }
     /*baseName = "NetWorkTraffic" + '-all'
@@ -96,7 +96,7 @@ task execute(type: JavaExec) {
     println 'type JavaExec'
 
 
-    main = "cic.cs.unb.ca.ifm.App" //main class
+    main = "cic.cs.unb.ca.ifm.CICFlowMeter" //main class
     classpath = sourceSets.main.runtimeClasspath
     String osName = System.getProperty('os.name').toLowerCase()
     if(osName.contains('windows')){
@@ -135,7 +135,7 @@ applicationDistribution.into("bin") {
 
 
 // The Application Plugin
-mainClassName = "cic.cs.unb.ca.ifm.App"
+mainClassName = "cic.cs.unb.ca.ifm.CICFlowMeter"
 applicationName = "CICFlowMeter"
 applicationDefaultJvmArgs = ["-Djava.library.path=../lib/native"]
 

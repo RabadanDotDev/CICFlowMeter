@@ -855,7 +855,7 @@ public class BasicFlow {
 	}
 	
 	public String getTimeStamp() {
-		return flowStartTime;
+		return Long.toString(flowStartTime);
 	}
 	
 	public long getFlowDuration() {
@@ -1098,7 +1098,7 @@ public class BasicFlow {
     	dump.append(getDstPort()).append(separator);          						//5
     	dump.append(getProtocol()).append(separator);         						//6 
     	
-    	String starttime = flowStartTime;
+    	String starttime = Long.toString(flowStartTime);
     	dump.append(starttime).append(separator);									//7
     	
     	long flowDuration = flowLastSeen - flowStartTime;

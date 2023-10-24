@@ -9,6 +9,7 @@ import org.jnetpcap.packet.JHeader;
 import org.jnetpcap.packet.JHeaderPool;
 import org.jnetpcap.packet.PcapPacket;
 import org.jnetpcap.protocol.lan.Ethernet;
+import org.jnetpcap.protocol.lan.SLL;
 import org.jnetpcap.protocol.network.Ip4;
 import org.jnetpcap.protocol.network.Ip6;
 import org.jnetpcap.protocol.tcpip.Tcp;
@@ -80,7 +81,11 @@ public class PacketReader {
 		 try{
 			 if(pcapReader.nextEx(hdr,buf) == Pcap.NEXT_EX_OK){
 				 packet = new PcapPacket(hdr, buf);
-				 packet.scan(Ethernet.ID);				 
+				 if(packet.hasHeader(Ethernet.ID)) {
+				 	 packet.scan(Ethernet.ID);				 
+				 } else {
+					 packet.scan(SLL.ID);
+				 }
 				 
 				 if(this.readIP4){					 
 					 packetInfo = getIpv4Info(packet);
